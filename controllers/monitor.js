@@ -1,9 +1,15 @@
+const axios = require('axios')
+const Jimp = require('jimp')
 
 const imgUpload = (req, res) => {
     const byteContent = req.file
-    console.log(byteContent);
-    if(byteContent) {
-        res.send('Image Uploaded!')
+    if (byteContent) {
+        axios.post('http://127.0.0.1:4000/image',
+            byteContent).then(function (response) {
+                res.send(response.data)
+            }).catch(err => {
+                console.log(err)
+            });
     } else {
         res.send('Something went wrong :c')
     }
@@ -11,4 +17,4 @@ const imgUpload = (req, res) => {
 
 module.exports = {
     imgUpload
-   }
+}
