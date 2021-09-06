@@ -1,11 +1,13 @@
 class CircularList  {
     constructor(){ 
         this.headNode = null;
+        this.pointer = null;
     }
 
     addNode(node) {
         if(this.headNode == null) {
             this.headNode = node;
+            this.pointer = this.headNode
             this.headNode.next = this.headNode;
             this.headNode.previous = this.headNode;
         } else {
@@ -34,6 +36,10 @@ class CircularList  {
             console.log(auxNode.data);
             auxNode = auxNode.next;
         } while (auxNode != this.headNode)
+    }
+
+    nextPointer(){
+        return  this.pointer = this.pointer.next;
     }
 }
 
