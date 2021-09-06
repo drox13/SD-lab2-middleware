@@ -2,6 +2,7 @@ const axios = require('axios')
 const Jimp = require('jimp')
 const CircularList = require('../dataStructure/CircularList')
 const Node = require('../dataStructure/Node')
+const fs = require('fs');
 
 const circularList = new CircularList();
 let node2 = new Node("instancia2");
@@ -15,9 +16,9 @@ var instancesNumber = 3;
 const imgUpload = (req, res) => {
     const byteContent = req.file
     if (byteContent) {
-        console.log(instance.charAt(instance.length-1));
         let request = `http://119.18.0.${instance.charAt(instance.length-1)}:4000/image` //puerto 4000 no debe cambiar
-        console.log("INSTANCIA!!!" + instance);
+        
+        writeLog("\n" + new Date() + " " + instance);
         axios.post(request, 
             byteContent).then(function (response) {
                 res.send(response.data)
@@ -25,13 +26,26 @@ const imgUpload = (req, res) => {
                 console.log(err)
             });
             instance = circularList.nextPointer().data;
-            
-            console.log("NUEVO APUNTADOR ES: ", instance);
     } else {
-        res.send('Something went wrong :c')
+        res.send('Something went wrong :c');
     }
 }
 
+const PATH = process.cwd();
+const urlLogs = PATH + "/logers/Hystory.log"
+
+function createFileLogs(){
+    fs.open(urlLogs, 'r', function (err, f) {
+    });
+}
+
+function writeLog(data){
+    createFileLogs()
+    fs.appendFile(urlLogs, data, (err) => {
+        if (err)
+          console.log(err);
+      });
+}
 module.exports = {
     imgUpload
 }
