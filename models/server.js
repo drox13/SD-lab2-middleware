@@ -31,6 +31,7 @@ class Server {
 		this.port = PORT;
 		this.middleware();
 		this.routes();
+		//this.testCircularList();
 	}
 
 	middleware() {
@@ -62,15 +63,11 @@ class Server {
 
 	testCircularList() {
 		const circularList = new CircularList();
-		let node1 = new Node(1);
-		let node2 = new Node(2);
-		let node3 = new Node(3);
-		let node4 = new Node(4);
+		let node1 = new Node("instancia2");
+		let node2 = new Node("instancia3");
 		circularList.addNode(node1);
 		circularList.addNode(node2);
-		circularList.addNode(node3);
-		circularList.addNode(node4);
-		circularList.removeNode(node1);
+		//circularList.removeNode(node1);
 		circularList.showList();
 	}
 }
