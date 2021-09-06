@@ -1,6 +1,6 @@
 const axios = require('axios')
 const Jimp = require('jimp')
-
+//to commit commentxd
 const imgUpload = (req, res) => {
     const byteContent = req.file
     if (byteContent) {
