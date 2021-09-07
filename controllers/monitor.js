@@ -49,12 +49,10 @@ const createNewinstance = (req, res) => {
 		numberInstance++
 		fs.writeFileSync(PATH + '/docker/counter.tmp', numberInstance)
 	
+		res.send({msg: 'New instance created'})
 	} catch (error) {
 		console.log(error);
 	}
-	res.status(200).json({
-		msg: 'New instance created',
-	});
 };
 
 const urlLogs = PATH + '/logers/Hystory.log';

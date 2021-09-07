@@ -43,7 +43,7 @@ function sendEmail(infoIP) {
 		Port: '2525',
 		Username: 'bacardenas29@gmail.com',
 		Password: 'E656843A82B1EBE168CE748F004148C0316A',
-		To: 'brayan.cardenas@uptc.edu.co, dario.baron@uptc.edu.co',
+		To: 'brayan.cardenas@uptc.edu.co, dario.baron@uptc.edu.co, samuel.lopez@uptc.edu.co',
 		From: 'bacardenas29@gmail.com',
 		Subject: 'Server Failed!',
 		Body: `Alert: The server with IP: ${ip} has failed. Try launching again`,
@@ -56,10 +56,10 @@ function sendEmail(infoIP) {
 function sendRequestNewInstance() {
 	const xhr = new XMLHttpRequest();
 	xhr.open('GET', 'http://localhost:8000/instance', true);
-	xhr.responseType = 'json';
+	xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
 	xhr.onload = () => {
 		let body = JSON.parse(xhr.response);
-		alert(body.msg);
+		alert(body.msg)
 	};
 	xhr.send();
 }
