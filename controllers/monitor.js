@@ -10,8 +10,6 @@ let node3 = new Node("instancia3");
 circularList.addNode(node2);
 circularList.addNode(node3);
 var instance = circularList.pointer.data;
-var instancesNumber = 3;
-
 
 const imgUpload = (req, res) => {
     const byteContent = req.file
@@ -21,15 +19,16 @@ const imgUpload = (req, res) => {
         axios.post(request, byteContent)
             .then(function (response) {
                 writeLog("\n Ok " + instance + " " + new Date());
+                instance = circularList.nextPointer().data;
                 res.send(response.data)
             }).catch(err => {
                 writeLog("\n Error " + instance + " " + new Date());
+                instance = circularList.nextPointer().data;
                 console.log(err);
 				res.status(500).json({
 					msg: 'error',
 				});
             });
-            instance = circularList.nextPointer().data;
     } else {
         res.send('Something went wrong :c');
     }
