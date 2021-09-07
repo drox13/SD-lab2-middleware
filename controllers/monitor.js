@@ -1,5 +1,4 @@
 const axios = require('axios');
-const Jimp = require('jimp');
 const fs = require('fs');
 const shell = require('shelljs');
 
@@ -18,7 +17,6 @@ const imgUpload = (req, res) => {
 	const byteContent = req.file;
 	if (byteContent) {
 		let request = `http://119.18.0.${instance.charAt(instance.length - 1)}:4000/image`; //puerto 4000 no debe cambiar
-
 		axios
 			.post(request, byteContent)
 			.then(function (response) {
@@ -48,7 +46,6 @@ const createNewinstance = (req, res) => {
 		shell.exec(PATH + `/docker/new_instance.sh ${numberInstance}`);
 		numberInstance++
 		fs.writeFileSync(PATH + '/docker/counter.tmp', numberInstance)
-	
 		res.send({msg: 'New instance created'})
 	} catch (error) {
 		console.log(error);

@@ -6,32 +6,12 @@ const CircularList = require('../dataStructure/CircularList')
 const Node = require('../dataStructure/Node')
 const PORT = 8000;
 
-// const storage = multer.diskStorage({
-//     destination: __dirname + '/public/uploads',
-//     filename: (req, file, cb) => {
-//         cb(null, file.originalname);
-//     }
-// })
-
-// const multerFilter = multer({
-// 	fileFilter : (req,file,cb) => {
-// 		const fileTypes = /jpeg|jpg|png|gif/;
-// 		const mimeType = fileTypes.test(file.mimetype);
-// 		const nameExt = fileTypes.test(path.extname(file.originalname));
-// 		if (mimeType && nameExt) {
-// 			return cb(null, true)
-// 		}
-// 		cb('Invalid file Type, Please try Image (JPG, JPEG, PNG, GIF)')
-// 	}
-// }).single;
-
 class Server {
 	constructor() {
 		this.app = express();
 		this.port = PORT;
 		this.middleware();
 		this.routes();
-		//this.testCircularList();
 	}
 
 	middleware() {
@@ -73,3 +53,26 @@ class Server {
 }
 
 module.exports = Server;
+
+
+
+		//this.testCircularList();
+		
+// const storage = multer.diskStorage({
+//     destination: __dirname + '/public/uploads',
+//     filename: (req, file, cb) => {
+//         cb(null, file.originalname);
+//     }
+// })
+
+// const multerFilter = multer({
+// 	fileFilter : (req,file,cb) => {
+// 		const fileTypes = /jpeg|jpg|png|gif/;
+// 		const mimeType = fileTypes.test(file.mimetype);
+// 		const nameExt = fileTypes.test(path.extname(file.originalname));
+// 		if (mimeType && nameExt) {
+// 			return cb(null, true)
+// 		}
+// 		cb('Invalid file Type, Please try Image (JPG, JPEG, PNG, GIF)')
+// 	}
+// }).single;

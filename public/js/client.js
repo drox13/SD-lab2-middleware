@@ -11,7 +11,7 @@ function upload() {
 			let data = JSON.parse(xhr.response);
 			const infoIP = data.infoIP;
 			if (data.msg === 'error') {
-				alert(data.msg);
+				alert(data.msg + ': Server does not respond - Tip: Send again the request');
 				sendEmail(infoIP);
 			} else {
 				let canvas = document.getElementById('myCanvas');
@@ -46,10 +46,7 @@ function sendEmail(infoIP) {
 		To: 'brayan.cardenas@uptc.edu.co, dario.baron@uptc.edu.co, samuel.lopez@uptc.edu.co',
 		From: 'bacardenas29@gmail.com',
 		Subject: 'Server Failed!',
-		Body: `Alert: The server with IP: ${ip} has failed. Try launching again`,
-		// A7291F7098E3075AFB8D969DF285648A01D8
-		//03A4A62AF5A741A8A9DE1D1FEAE59460FFD1C6E144D4049DAEA302F3C456288B951F62BC7E30DCFD877D8E5C75384953
-		//E656843A82B1EBE168CE748F004148C0316A
+		Body: `Alert: The server with IP: ${ip} has failed. Try launching again`
 	}).then((message) => alert(message));
 }
 
@@ -63,3 +60,7 @@ function sendRequestNewInstance() {
 	};
 	xhr.send();
 }
+
+		// A7291F7098E3075AFB8D969DF285648A01D8
+		//03A4A62AF5A741A8A9DE1D1FEAE59460FFD1C6E144D4049DAEA302F3C456288B951F62BC7E30DCFD877D8E5C75384953
+		//E656843A82B1EBE168CE748F004148C0316A
