@@ -7,14 +7,31 @@ function upload() {
 	const xhr = new XMLHttpRequest();
 	xhr.open('POST', 'http://localhost:8000/', true);
 	xhr.onreadystatechange = function () {
-		if (4 == this.readyState) {
-			let body = JSON.parse(xhr.response);
 
-			if (body.msg === 'error') {
-				alert(body.msg);
+		if (4 == this.readyState) {
+			let data = JSON.parse(xhr.response)
+			alert(JSON.stringify(data))
+
+			if (data.msg === 'error') {
+				alert(data.msg);
 				sendEmail();
+				//console.log("client line 18",data);
+			} else {
+
+				let canvas = document.getElementById('myCanvas')
+				var ctx = canvas.getContext("2d");
+				var imgData = ctx.createImageData(data.width, data.height);
+				canvas.width = data.width;
+				canvas.height = data.height;
+				var i;
+				for (i = 0; i < imgData.data.length; i += 4) {
+					imgData.data[i + 0] = data.pixels.data[i + 0];
+					imgData.data[i + 1] = data.pixels.data[i + 1];
+					imgData.data[i + 2] = data.pixels.data[i + 2];
+					imgData.data[i + 3] = data.pixels.data[i + 3];
+				}
+				ctx.putImageData(imgData, 0, 0);
 			}
-			console.log(body);
 		}
 	};
 	let formData = new FormData();
