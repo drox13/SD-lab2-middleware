@@ -33,7 +33,6 @@ const imgUpload = (req, res) => {
 				res.status(500).json({
 					msg: 'error',
 					infoIP: request,
-					serverName: `instancia${instance}`,
 				});
 			});
 	} else {
@@ -44,7 +43,6 @@ const imgUpload = (req, res) => {
 const createNewinstance = (req, res) => {
 	try {
 		let numberInstance = fs.readFileSync(PATH + '/docker/counter.txt', 'utf8');
-		console.log('instancia', numberInstance);
 		circularList.addNode(new Node(`instancia${numberInstance}`));
 		circularList.showList();
 		shell.exec(PATH + '/docker/new_instance.sh');
