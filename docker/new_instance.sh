@@ -1,6 +1,6 @@
 
-# crea una variable que reprecenta el archivo
-COUNTER_FILE="counter.tmp"
+# crea una variable que representa el archivo
+COUNTER_FILE="counter.txt"
 
 #leo el archivo
 count=`cat $COUNTER_FILE`

@@ -1,9 +1,10 @@
 const { Router } = require('express');
-const { imgUpload } = require('../controllers/monitor');
+const { imgUpload, createNewinstance } = require('../controllers/monitor');
 
 const router = Router();
 
-router.post('/', imgUpload)
+router.post('/', imgUpload);
 
+router.get('/instance', createNewinstance);
 
 module.exports = router;
