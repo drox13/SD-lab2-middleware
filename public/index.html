@@ -6,23 +6,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Image-Sentencer</title>
+    <title>Lab2 - Image-Sentencer</title>
     <script src="js/client.js" async></script>
     <script src="https://smtpjs.com/v3/smtp.js"></script>
 </head>
 
 <body>
-    <!-- <form action="/" enctype="multipart/form-data" method="POST"> 
-        <input type="file" name="image" />
-        <input type="submit" value="Upload a file"/> -->
-    <button type="submit" id="uploadImageButton"> Upload your Image</button>
-    <input id="imageSelector" type="file" />
-    <!-- <canvas id="canvas" style="border:2px solid #d3d3d3;"></canvas> -->
-    <img src="" id="imageReceived" class="image">
-    </form>
+    <header>
+        <span class="button_icon">
+            <ion-icon name="logo-android"></ion-icon>
+        </span>
+        <h2>Laboratorio 2</h2>
+    </header>
+    <div class="container">
+        <input id="imageSelector" type="file" />
+        <button type="submit" id="uploadImageButton" class="button">
+            <span class="button_text">Send Image</span>
+            <span class="button_icon">
+                <ion-icon name="send-outline"></ion-icon>
+            </span>
+        </button>
+        <img src="" id="imageReceived" class="image">
+        <button class="button" onclick="sendRequestNewInstance()">
+            <span class="button_text">Create instance</span>
+            <span class="button_icon">
+                <ion-icon name="duplicate-outline"></ion-icon>
+            </span>
+        </button>
+        </form>
+    </div>
+   
     <canvas id="myCanvas">
     </canvas>
-    <button class="" id="btnCreateNewInstance" onclick="sendRequestNewInstance()"> Create new instance</button>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
