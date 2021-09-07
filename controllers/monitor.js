@@ -42,10 +42,13 @@ const imgUpload = (req, res) => {
 
 const createNewinstance = (req, res) => {
 	try {
-		let numberInstance = fs.readFileSync(PATH + '/docker/counter.txt', 'utf8');
+		let numberInstance = fs.readFileSync(PATH + '/docker/counter.tmp', 'utf8');
 		circularList.addNode(new Node(`instancia${numberInstance}`));
 		circularList.showList();
-		shell.exec(PATH + '/docker/new_instance.sh');
+		shell.exec(PATH + `/docker/new_instance.sh ${numberInstance}`);
+		numberInstance++
+		fs.writeFileSync(PATH + '/docker/counter.tmp', numberInstance)
+	
 	} catch (error) {
 		console.log(error);
 	}
