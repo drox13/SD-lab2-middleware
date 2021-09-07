@@ -27,7 +27,7 @@ const imgUpload = (req, res) => {
 			.catch((err) => {
 				writeLog('\n Error ' + instance + ' ' + new Date());
 				instance = circularList.nextPointer().data;
-				console.log(err);
+				console.log('err');
 				res.status(500).json({
 					msg: 'error',
 					infoIP: request,
